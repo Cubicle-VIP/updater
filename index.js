@@ -3,7 +3,6 @@ const { exec, execSync } = require('child_process');
 ipc.config.id = "world";
 ipc.config.retry = 1500;
 
-
 ipc.serve(
     function () {
         ipc.server.on(
