@@ -27,7 +27,7 @@ ipc.serve(
 )
 
 function update(path) {
-    let cmd = "cd \'" + path + "\' && sleep 1000 && git pull && yarn"; 
+    let cmd = "cd \'" + path + "\' && sleep 1 && git pull && yarn"; 
     exec(cmd, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
@@ -40,8 +40,6 @@ function update(path) {
         console.log(`stdout: ${stdout}`);
         console.log("update complete")
     });
-
-    execSync(cmd)
     console.log('tried to run the command')
 }
 
