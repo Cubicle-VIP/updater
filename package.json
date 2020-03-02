@@ -1,0 +1,13 @@
+{
+  "name": "updater",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "version": "1.0.0",
+  "description": "Update an app when it requests to be updates",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-ipc": "^9.1.1"
+  }
+}
