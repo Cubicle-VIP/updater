@@ -27,7 +27,7 @@ ipc.serve(
 )
 
 function update(path) {
-    exec("cd \'" + path + "\' && sleep 1000 git pull && yarn", (error, stdout, stderr) => {
+    exec("cd \'" + path + "\' && sleep 1000 && git pull && yarn", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
@@ -37,8 +37,9 @@ function update(path) {
             return;
         }
         console.log(`stdout: ${stdout}`);
+        console.log("update complete")
     });
-    
+    console.log('tried to run the command')
 }
 
 ipc.server.start();
