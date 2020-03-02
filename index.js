@@ -1,5 +1,5 @@
 const ipc = require('node-ipc')
-const { exec } = require('child_process');
+const { exec, execSync } = require('child_process');
 ipc.config.id = "world";
 ipc.config.retry = 1500;
 
@@ -27,7 +27,8 @@ ipc.serve(
 )
 
 function update(path) {
-    exec("cd \'" + path + "\' && sleep 1000 && git pull && yarn", (error, stdout, stderr) => {
+    let cmd = "cd \'" + path + "\' && sleep 1000 && git pull && yarn"; 
+    exec(cmd, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
@@ -39,6 +40,8 @@ function update(path) {
         console.log(`stdout: ${stdout}`);
         console.log("update complete")
     });
+
+    execSync(cmd)
     console.log('tried to run the command')
 }
 
